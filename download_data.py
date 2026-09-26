@@ -32,6 +32,7 @@ RAW = Path(__file__).parent / "data" / "raw"
 AIRBNB_SNAPSHOTS = {
     "barcelona": ("spain/catalonia/barcelona", "2026-06-24"),
     "madrid": ("spain/comunidad-de-madrid/madrid", "2026-06-20"),
+    "rio": ("brazil/rj/rio-de-janeiro","2026-06-24")
 }
 
 PAYMENTS_BASE = (
@@ -76,6 +77,8 @@ def download_payments() -> None:
 
 def download_airbnb(city: str) -> None:
     """Inside Airbnb: the listings and reviews files for one city snapshot."""
+    all_files_flag = True
+
     if city not in AIRBNB_SNAPSHOTS:
         sys.exit(
             f"No snapshot pinned for {city!r}. Known: {', '.join(AIRBNB_SNAPSHOTS)}.\n"
@@ -84,11 +87,19 @@ def download_airbnb(city: str) -> None:
         )
     path, date = AIRBNB_SNAPSHOTS[city]
     print(f"Inside Airbnb - {city}, snapshot {date}")
+
+    base_url = f"https://data.insideairbnb.com/{path}/{date}/data/"
     for name in ("listings", "reviews"):
-        url = f"https://data.insideairbnb.com/{path}/{date}/data/{name}.csv.gz"
+        url = base_url+f"{name}.csv.gz"
         # Left gzipped on purpose: reviews.csv is 133 MB expanded and pandas
         # reads .gz directly, so pd.read_csv("...reviews.csv.gz") just works.
         fetch(url, RAW / f"{name}.csv.gz")
+    if all_files_flag:
+        fetch(base_url+"calendar.gz", RAW / "calendar.gz")
+        fetch(base_url+"neighbourhoods.csv", RAW / "neighbourhoods.csv")
+        fetch(base_url+"neighbourhoods.geojson", RAW / "neighbourhoods.geojson")
+
+
 
 
 def download_retail() -> None:
