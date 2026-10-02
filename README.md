@@ -53,7 +53,7 @@ The ERD (`erd.png`) and schema (`sql/schema.sql`) were designed with drawSQL, th
 3. **Value for money**: Private rooms beat entire homes, confirming the hypothesis, but the best deals come from *larger* groups (5-6, 7+ guests) splitting the cost, not the smaller 2-3 guest listings originally expected.
 4. **Hosts**: Superhosts outperform non-superhosts on occupancy and rating; among Superhosts, single-listing hosts beat multi-listing hosts on both measures, supporting the idea that scale comes at some cost to the guest experience.
 5. **Seasonality**: The hypothesized winter (June-August) lull shows up in most years, but the expected Carnival peak (February-March) is inconsistent, appearing clearly only in 2025. November is the most consistent peak across all three years, a pattern not anticipated going in.
-6. **Combined ranking**: *(in progress — not yet completed in this notebook)*
+6. **Combined ranking**: Combining location, price-per-guest, and rating into a single score surfaces listings that no single metric would have caught alone — modest, well-located private rooms in South Zone neighborhoods outside the usual Copacabana/Ipanema spotlight, hosted by small-scale Superhosts, confirming that the best overall choice trades a bit of fame for better value.
 
 See `notebooks/03_hypothesis_and_visualization.ipynb` for the full write-up, supporting queries, and visualizations, and its "Limitations and Next Steps" section for the caveats behind these findings.
 
