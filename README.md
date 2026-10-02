@@ -61,7 +61,7 @@ See `notebooks/03_hypothesis_and_visualization.ipynb` for the full write-up, sup
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<your-username>/<your-repo>.git
+git clone https://github.com/gbrlgms/project-1-eda-sql.git
 cd <your-repo>
 
 # 2. Check you already have the libraries — a current Anaconda install does.
